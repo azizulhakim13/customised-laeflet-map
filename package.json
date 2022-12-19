@@ -1,0 +1,54 @@
+{
+  "name": "eventor-conference",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Eventor conference HTML template",
+  "author": "senseflame",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senseflame/eventor-html.git"
+  },
+  "bugs": {
+    "url": "https://github.com/senseflame/eventor-html/issues"
+  },
+  "homepage": "https://github.com/senseflame/eventor-html#readme",
+  "scripts": {
+    "build": "npm run css",
+    "css-compile": "node-sass --include-path node_modules --output-style expanded --source-map true --source-map-contents true --precision 6 scss -o assets/css/",
+    "css-lint": "stylelint scss/",
+    "css-prefix": "postcss --replace assets/css/style.css --use autoprefixer --map",
+    "css-purge": "purgecss --keyframes --css assets/css/style.css --content index.html \"node_modules/bootstrap/js/dist/{util,modal}.js\" --output assets/css/",
+    "css": "npm-run-all css-compile css-prefix",
+    "server": "live-server --port=3000",
+    "start": "npm-run-all --parallel watch server",
+    "watch": "nodemon -e html,scss -x \"npm run css\"",
+    "test": "npm run css-lint && npm run css"
+  },
+  "keywords": [
+    "bootstrap",
+    "sass",
+    "css",
+    "javascript",
+    "event",
+    "template"
+  ],
+  "dependencies": {
+    "bootstrap": "^5.2.1",
+    "bootstrap-icons": "^1.9.1",
+    "jquery": "3.6.1",
+    "wow.js": "^1.2.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "live-server": "^1.2.2",
+    "node-sass": "^7.0.3",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0",
+    "purgecss": "^5.0.0",
+    "stylelint": "^14.12.1",
+    "stylelint-config-twbs-bootstrap": "^6.0.0"
+  }
+}
